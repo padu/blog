@@ -1,0 +1,55 @@
+Title : H264 notes
+H264
+ - also called as MPEG-4 AVC or MPEG-4 Part 10
+ - an H264 stream is in the form of non-VCL NALUs and VCL NALUs
+ - non-VCL NALU contains parameter sets and VCL NALUs contain coded slices (media data)
+ - a slice contains macroblocks
+ - a macroblock is a matrix (16 x 16) that contains/doesn't contain (skip
+   macroblocks) luma/chroma samples
+ 
+H264 is a set of tools.
+For e.g.:
+SATD, SAD : These are algorithms to find an object in an image.
+SATD: Sum of Absolute Transformed Differences
+SAD : Sum of Absolute Differences
+
+SAD:
+- This has AVX instructions.
+- Suppose the object to be found and the search image is defined as:
+
+ 2 5 5       2 7 5 8 6
+ 4 0 7       1 7 4 2 7
+ 7 5 9       8 4 6 8 5
+
+The target area can be either in the left/middle/right region of the search
+image.
+We can calculate the difference between each corresponding pair of images:
+Left    Center   Right
+0 2 0   5 0 3    3 3 1
+3 7 3   3 4 5    0 2 0
+1 1 3   3 1 1    1 3 4
+
+For each patch above, we can sum up all the differences - 20, 25 and 17.
+Since the lowest sum is 17, the object lies in the right region.
+
+SATD:
+- This doesn't have any AVX instructions.
+
+Entropy coding modes:
+CABAC (Context Adaptive Binary Arithmetic Coding)- 5 to 15% more efficient than CAVLC.
+CAVLC (Context Adaptive Variable Length Coding)
+
+Profiles, levels, High/Main/Baseline(No B-frames)
+
+I/IDR frames
+
+There are two kinds of I Frames - normal I frames and IDR frames.
+normal I frames: frames after a normal I frame can refer to frames before the
+normal I frames.
+IDR frames: frames after the IDR frame cannot refer to other frames before the
+IDR frame. A video sequence always begins with an IDR frame. A scene change
+also begins with an I frame.
+
+GoP: Group of Pictures
+This is the group of frames starting from an I frame upto and excluding the
+next I frame.
