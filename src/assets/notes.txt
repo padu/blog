@@ -21,8 +21,7 @@ SAD:
  4 0 7       1 7 4 2 7
  7 5 9       8 4 6 8 5
 
-The target area can be either in the left/middle/right region of the search
-image.
+The target area can be either in the left/middle/right region of the search image.
 We can calculate the difference between each corresponding pair of images:
 Left    Center   Right
 0 2 0   5 0 3    3 3 1
@@ -44,12 +43,9 @@ Profiles, levels, High/Main/Baseline(No B-frames)
 I/IDR frames
 
 There are two kinds of I Frames - normal I frames and IDR frames.
-normal I frames: frames after a normal I frame can refer to frames before the
-normal I frames.
-IDR frames: frames after the IDR frame cannot refer to other frames before the
-IDR frame. A video sequence always begins with an IDR frame. A scene change
+normal I frames: frames after a normal I frame can refer to frames before the normal I frames.
+IDR frames: frames after the IDR frame cannot refer to other frames before the IDR frame. A video sequence always begins with an IDR frame. A scene change
 also begins with an I frame.
 
 GoP: Group of Pictures
-This is the group of frames starting from an I frame upto and excluding the
-next I frame.
+This is the group of frames starting from an I frame upto and excluding the next I frame.
