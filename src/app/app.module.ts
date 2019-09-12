@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BlogBodyComponent } from './blog-body/blog-body.component';
 import { StaticBlog1Component } from './static-blog1/static-blog1.component';
 
+import { DisqusModule } from 'ngx-disqus';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { StaticBlog1Component } from './static-blog1/static-blog1.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DisqusModule.forRoot('https-padu-github-io-blog')
   ],
   providers: [],
   bootstrap: [AppComponent]

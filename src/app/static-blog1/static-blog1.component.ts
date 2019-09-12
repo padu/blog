@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./static-blog1.component.scss']
 })
 export class StaticBlog1Component implements OnInit {
+  pageId = '/blog1';
 
   constructor() { }
 
